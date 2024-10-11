@@ -1,0 +1,25 @@
+p.verso {
+    color: blue;
+}
+
+p.mote {
+    color: red;
+}
+
+a.link:hover {
+    color: aqua;
+    transition: all .25s;
+}
+
+img.avatar {
+    width: 150px;
+    border-radius: 50%;
+}
+
+img.poeta {
+    border-radius: 50%;
+}
+
+th {
+    background-color: blanchedalmond;
+}

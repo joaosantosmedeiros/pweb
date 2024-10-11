@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>   
+   <head>
+      <meta charset="UTF-8">      
+      <style>
+        td {
+            background-color: lightblue;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        a {
+         display: block;
+         cursor: pointer;
+         padding: 20px;
+         border-radius: 10px;
+         width: 150px; 
+         text-align: center;
+         background-color: #e0dfdf;
+         margin-bottom: 7px;
+        }
+
+        a:hover {
+         background-color: #dda2a2;
+        }
+      </style>
+   </head>
+   <body>
+      <div id="meu-amor">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                </tr>
+            </thead>
+            <tbody id="aqui">
+            </tbody>
+        </table>
+      </div>
+      <div>
+        <a id="botaoCarregar">Carregando carnes...</a>
+        <a id="botaoOrdenar">Ordenar</a>
+        <a id="botaoEmbaralhar">Embaralhar</a>
+      </div>
+   </body>   
+   <script>
+      let carnes = ["Patinho", "Fraldinha", "Picanha"];
+
+      const carregarDiv = (lista) => {
+         const div = document.getElementById("aqui");
+         const cervejasHtml = lista.map(item => `<tr><td>${item}</td></td>`); 
+         div.innerHTML = `${cervejasHtml.join("\n")}`;
+      };
+
+      const ordenar = (lista) => {
+        lista.sort();
+        carregarDiv(lista);
+      }
+
+      const embaralhar = (lista) => {
+         lista = lista.reverse();
+         carregarDiv(lista);
+      };
+
+      document.getElementById("botaoCarregar").addEventListener("click", () => carregarDiv(carnes));          
+      document.getElementById('botaoOrdenar').addEventListener("click", () => ordenar(carnes));
+      document.getElementById('botaoEmbaralhar').addEventListener("click", () => embaralhar(carnes));
+   </script>
+</html>

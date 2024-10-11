@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .cerveja {
+            color: darkcyan;
+        }
+
+        th {
+            width: 200px;
+            border: 1px solid lightcoral;
+        }
+        td {
+            text-align: left;
+            border-bottom: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="meu amor">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Teor Alcoolico</th>
+                </tr>
+            </thead>
+            <tbody id="aqui"></tbody>
+        </table>
+        <button id="botaoCarregar">Carregando cervejas...</button>
+        <button id="embaralhar" onclick="embaralhar()">Embaralhar cervejas</button>
+        <button id="ordenar">Ordenar</button>
+    </div>
+</body>
+<script>
+    let cervejas = ["Guiness", "Desperados", "Becks"]
+    function transformar(item) {
+        return `<tr class="cerveja"><td>${item}</td></tr>`;
+    }
+    document.getElementById('ordenar').addEventListener("click", () => {
+        cervejas.sort();
+        carregarDiv(cervejas);
+    });
+    function carregarDiv() {
+        let div = document.getElementById("aqui")
+        let cervejasHtml = cervejas.map(transformar)
+        div.innerHTML = `${cervejasHtml.join("\n")}`
+    }
+    let botao = document.getElementById("botaoCarregar")
+    botao.addEventListener("click", carregarDiv)
+    
+    function embaralhar() {
+        cervejas = cervejas.reverse();
+        carregarDiv();
+    }
+</script>
+
+</html>
